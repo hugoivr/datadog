@@ -5,7 +5,7 @@ Esta es una guía simplificada para el despliegue de los agentes de Datadog sobr
 
 Se aplica el siguiente manifiesto definiendo el RBAC necesario para el despliegue del agente como sidecar:
 
-```
+``` yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
