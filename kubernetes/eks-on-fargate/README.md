@@ -171,5 +171,6 @@ clusterAgent:
 Desplegar el char de Helm:
 
 ``` bash
+# helm install <RELEASE-NAME> <CHART-REPO> -n <NAMESPACE> -f <CUSTOM-VALUES-FILE>
 helm install datadog datadog/datadog -n datadog -f values.yaml
 ```
