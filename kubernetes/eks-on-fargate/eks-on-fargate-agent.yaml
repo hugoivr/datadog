@@ -67,7 +67,7 @@ spec:
           # Al ser desplegado por Helm, el cluster agent toma el formato <RELEASE_NAME>-cluster-agent
           # El namespace en el que fue desplegado el servicio del cluster agent
           value: https://<CLUSTER_AGENT_SERVICE_NAME>.<CLUSTER_AGENT_SERVICE_NAMESPACE>.svc.cluster.local:5005
-        - name: DD_ORCHESTRATOR_EXPLORER_ENABLED # Required to get Kubernetes resources view
+        - name: DD_ORCHESTRATOR_EXPLORER_ENABLED
           value: "true"
       serviceAccountName: datadog-agent              
           

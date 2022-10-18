@@ -1,0 +1,11 @@
+datadog:
+  apiKey: <YOUR_DATADOG_API_KEY> # De acuerdo al ejemplo: datadog-keys
+  clusterName: <CLUSTER_NAME>    # Hacer match con el despliegue de sidecar de los agentes
+agents:
+  enabled: false
+clusterAgent:
+  enabled: true
+  replicas: 2
+  token: <Token en texto plano>
+  # Para evitar Texto Plano
+  # tokenExistingSecret: <Nombre del secret que contiene el auth token>

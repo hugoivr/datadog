@@ -1,5 +1,7 @@
 # EKS on Fargate (ES)
-Esta es una guía simplificada para el despliegue de los agentes de Datadog sobre *EKS on Fargate*:
+Esta es una guía simplificada para el despliegue de los agentes de Datadog sobre *EKS on Fargate*.
+
+Los detalles completos sobre el funcionamiento de Datadog sobre *EKS on Fargate* se encuentran en el siguiente [link](https://docs.datadoghq.com/integrations/eks_fargate/#overview)
 
 ## Paso 1: Definición de RBAC
 
@@ -136,12 +138,12 @@ spec:
 ## Paso 3: Despliegue del Cluster Agent
 El despliegue del Cluster Agent se realiza utilizando Helm para simplificar la creación de RBAC y servicios involucrados. Seguimos el procedimiento para despliegue por Helm:
 
-Instalar el chart de Helm
+Instalar el chart de Helm:
 ``` bash
 helm repo add datadog https://helm.datadoghq.com
 helm repo update
 ```
-Crear el namespace de Datadog y los secrets necesarios
+Crear el namespace de Datadog y los secrets necesarios:
 ``` bash
 kubectl create ns datadog
 kubectl create secret generic datadog-keys -n datadog --from-literal=api-key=<API-KEY>
