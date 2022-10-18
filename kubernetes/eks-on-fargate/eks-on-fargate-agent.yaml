@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+# Todos los campos con valor APPLICATION_NAME hacen referencia a las definiciones
+# del despliegue de los contenedores aplicativos y son solamente un ejemplo de la forma
+# en la que se despliega el agente como sidecar.
+metadata:
+  name: "<APPLICATION_NAME>"
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: "<APPLICATION_NAME>"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "<APPLICATION_NAME>"
+      name: "<POD_NAME>"
+    spec:
+      containers:
+      - name: "<APPLICATION_NAME>"
+        image: "<APPLICATION_IMAGE>"
+     ########################################################################## 
+     ## Definición del agente como Sidecar 
+     ##########################################################################
+      - name: datadog-agent
+        image: datadog/agent
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "200m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        env:
+        - name: DD_API_KEY
+          value: "<YOUR_DATADOG_API_KEY>"
+        - name: DD_SITE
+          value: "datadoghq.com"
+        - name: DD_EKS_FARGATE
+          value: "true"
+        - name: DD_CLUSTER_NAME
+          value: "<CLUSTER_NAME>"
+        - name: DD_KUBERNETES_KUBELET_NODENAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+      ##########################################################################
+      ## Variables para comunicar agentes y Cluster Agent
+      ##########################################################################
+        - name: DD_CLUSTER_AGENT_ENABLED
+          value: "true"
+          # Se requiere un token de autenticación entre el Cluster Agent y los agentes
+          # El token puede ser una llave generada de forma manual y colocarse en texto plano
+          # El token puede ser un Secret y accederse usando valueFrom para evitar el texto plano
+          # A continuación ambas opciones: 
+        - name: DD_CLUSTER_AGENT_AUTH_TOKEN
+          value: <Token en texto plano> # Reemplazar este valor con el token
+          # En caso de querer evitar usar el token en texto plano:
+          # valueFrom:
+          #   secretKeyRef:
+          #     name: <AUTH_TOKEN_SECRET_NAME>  
+          #     key: <AUTH_TOKEN_KEY>
+        - name: DD_CLUSTER_AGENT_URL
+          # En este caso hay que reemplazar los valores adecuados para referenciar al cluster agent:
+          # Al ser desplegado por Helm, el cluster agent toma el formato <RELEASE_NAME>-cluster-agent
+          # El namespace en el que fue desplegado el servicio del cluster agent
+          value: https://<CLUSTER_AGENT_SERVICE_NAME>.<CLUSTER_AGENT_SERVICE_NAMESPACE>.svc.cluster.local:5005
+        - name: DD_ORCHESTRATOR_EXPLORER_ENABLED # Required to get Kubernetes resources view
+          value: "true"
+      serviceAccountName: datadog-agent              
+          
