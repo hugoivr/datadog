@@ -1,5 +1,5 @@
 # Automatic Library Injection Lab
 
-## Setting up a rancher instance
+## Setting up a rancher instance
 
-*this segment is taken from Jenks Gibbons Repo: https://github.com/jgibbons-cp/datadog/tree/main/kubernetes/rancher *
+_this segment is taken from Jenks Gibbons Repo: https://github.com/jgibbons-cp/datadog/tree/main/kubernetes/rancher_
