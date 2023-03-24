@@ -54,18 +54,25 @@ _Thank you Jenks!_
     https://<ip_of_instance>:444  
     ```
 
+
 ## Setting up kubectl
+
 
 1. Install kubectl and get your kubeconfig file ready (_taken from official docs https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux_)
     1. Download binary
     ```shell
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"  
     ```
-    2. Install
+    2. Install.
     ```shell
     sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
     ```
     3. Verify installation.
     ```shell
     kubectl version --client --output=yaml 
+    ```
+    4. Enable autocomplete for kubectl.
+    ```shell
+    echo 'source <(kubectl completion bash)' >>~/.bashrc
+    source ~/.bashrc
     ```
