@@ -1,8 +1,26 @@
 # Automatic Library Injection Lab
 
+## Connecting to your provided Azure instance
+
+Please review the lab number that was assigned to you in the following list: https://docs.google.com/spreadsheets/d/1hPBRIHqvjKXgNPEJKD3o0IUSlhqNb5-A_62fA43Iq-8/edit?usp=share_link 
+
+Download the corresponding key for your lab: https://docs.google.com/spreadsheets/d/1hPBRIHqvjKXgNPEJKD3o0IUSlhqNb5-A_62fA43Iq-8/edit?usp=share_link
+
+You will need to modify the permissions to the key file:
+```shell
+sudo chmod 600 <key-filename.pem>
+```
+
+Use the following command with to connect to your instance via ssh:
+```shell
+ssh azureuser@<lab-ip> -i <key-filename.pem>
+```
+
+
 ## Setting up a Rancher instance
 
 _This segment is taken from Jenks Gibbons Repo: https://github.com/jgibbons-cp/datadog/tree/main/kubernetes/rancher_
+_Thank you Jenks!_
 
 
 1. Launch your Ubuntu instance.
