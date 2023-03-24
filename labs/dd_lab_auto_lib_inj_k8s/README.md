@@ -76,3 +76,8 @@ _Thank you Jenks!_
     echo 'source <(kubectl completion bash)' >>~/.bashrc
     source ~/.bashrc
     ```
+    5. Setup the kubeconfig file to connect to your new cluster. You can copy your kubeconfig contents from the GUI right-most corner button _"Copy kubeconfig to clipboard"_ and copy the content into the path ~/.kube/config .
+    ```shell
+    mkdir ~/.kube
+    vim ~/.kube/config
+    ```
