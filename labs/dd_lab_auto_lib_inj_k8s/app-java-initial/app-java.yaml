@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: app-java
+  name: app-java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: app-java
+  template:
+    metadata:
+      labels:
+        run: app-java
+      annotations:
+        name: app-java
+    spec:
+      containers:
+      - image: jenksgibbons/app-java:no_tracer
+        name: app-java
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: DB_HOST
+          value: ""
+        - name: DB
+          value: ""
+        ports:
+        - containerPort: 8080
+          hostPort: 8080
+          name: "http"
+        - containerPort: 9012
+          hostPort: 9012
+          name: "jmx"
+      nodeSelector:
+        kubernetes.io/os: linux  

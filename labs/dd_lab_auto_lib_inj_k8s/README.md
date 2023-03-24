@@ -4,7 +4,7 @@
 
 Please review the lab number that was assigned to you in the following list: https://docs.google.com/spreadsheets/d/1hPBRIHqvjKXgNPEJKD3o0IUSlhqNb5-A_62fA43Iq-8/edit?usp=share_link 
 
-Download the corresponding key for your lab: https://docs.google.com/spreadsheets/d/1hPBRIHqvjKXgNPEJKD3o0IUSlhqNb5-A_62fA43Iq-8/edit?usp=share_link
+Download the corresponding key for your lab: https://drive.google.com/drive/folders/10sYqikYPni-NOxd-D1pAwyIIWqioHP9H
 
 You will need to modify the permissions to the key file:
 ```shell
