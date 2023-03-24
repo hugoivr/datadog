@@ -8,6 +8,10 @@ _This segment is taken from Jenks Gibbons Repo: https://github.com/jgibbons-cp/d
 1. Launch your Ubuntu instance.
 2. Prepare the host:
     1. Update libraries
+    ```shell
+    sudo apt-get update
+    sudo apt upgrade
+    ```
     2. Install Docker
 
 
