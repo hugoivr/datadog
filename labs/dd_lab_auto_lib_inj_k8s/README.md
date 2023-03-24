@@ -21,7 +21,7 @@ _This segment is taken from Jenks Gibbons Repo: https://github.com/jgibbons-cp/d
     sudo groupadd docker  
     sudo usermod -aG docker $USER  
     ```
-    4. Log in and out to avoid using sudo
+    4. Log in and out to avoid using sudo. Once back in, run the Rancher instance using the next command
     ```shell
     docker run -d --restart=unless-stopped -p 81:80 -p 444:443 --privileged rancher/rancher:v2.6-head  
     ```
@@ -31,6 +31,10 @@ _This segment is taken from Jenks Gibbons Repo: https://github.com/jgibbons-cp/d
     docker logs <container_id> 2>&1 | grep "Bootstrap Password:"
 
     ```
+    6. Navigate to the Rancher GUI. Skip the certificate warnings. Use the bootstrap password and change your login.
+    ```shell
+    https://<ip_of_instance>:444  
 
+    ```
 
 
