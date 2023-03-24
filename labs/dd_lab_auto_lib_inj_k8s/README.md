@@ -55,7 +55,7 @@ _Thank you Jenks!_
     ```
 
 
-## Setting up kubectl
+## Setting up kubectl
 
 
 1. Install kubectl and get your kubeconfig file ready (_taken from official docs https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux_)
