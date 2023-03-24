@@ -32,27 +32,40 @@ _Thank you Jenks!_
     ```
     2. Install Docker
     ```shell
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo apt-get install docker.io
     ```
     3. Add users
     ```shell
     sudo groupadd docker  
     sudo usermod -aG docker $USER  
     ```
-    4. Log in and out to avoid using sudo. Once back in, run the Rancher instance using the next command
+3. Run your Rancher environment:
+    1. Log in and out to avoid using sudo. Once back in, run the Rancher instance using the next command
     ```shell
     docker run -d --restart=unless-stopped -p 81:80 -p 444:443 --privileged rancher/rancher:v2.6-head  
     ```
-    5. Get container ID and the bootstrap password
+    2. Get container ID and the bootstrap password
     ```shell
     docker container ls
     docker logs <container_id> 2>&1 | grep "Bootstrap Password:"
-
     ```
-    6. Navigate to the Rancher GUI. Skip the certificate warnings. Use the bootstrap password and change your login.
+    3. Navigate to the Rancher GUI. Skip the certificate warnings. Use the bootstrap password and change your login.
     ```shell
     https://<ip_of_instance>:444  
-
     ```
 
+## Setting up kubectl
 
+1. Install kubectl and get your kubeconfig file ready (_taken from official docs https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux_)
+    1. Download binary
+    ```shell
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"  
+    ```
+    2. Install
+    ```shell
+    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    ```
+    3. Verify installation.
+    ```shell
+    kubectl version --client --output=yaml 
+    ```
